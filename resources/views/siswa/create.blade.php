@@ -13,9 +13,9 @@
             <label name="kelas">Kelasku</label>
             <br>
             <select name="kelas">
-                <option value="">XII PPLG 1</option>
-                <option value="">XII PPLG 2</option>
-                <option value="">XII PPLG 3</option>
+                <option value="1">XII PPLG 1</option>
+                <option value="2">XII PPLG 2</option>
+                <option value="3">XII PPLG 3</option>
             </select>
         </div><br>
         <div>
@@ -43,8 +43,8 @@
             <input type="text"name="password">
         </div><br>
         <div>
-            <label name="photo">Photo</label><br>
-            <input type="file"name="photo">
+            <label name="foto">Foto</label><br>
+            <input type="file"name="foto">
         </div><br>
         <button type="submit">Simpan</button>
     </form>

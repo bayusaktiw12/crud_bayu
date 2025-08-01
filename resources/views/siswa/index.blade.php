@@ -10,7 +10,7 @@
     <h1>Halaman Beranda</h1>
     <p>List Data Siswa</p>
     <a href=""></a>
-    <table>
+    <table border="1">
         <thead>
             <tr>
                 <th>Photo</th>
@@ -37,7 +37,7 @@
             </tr>
         </tbody>
     </table>
-    <a href="/siswa/create">Tambah Data Siswa</a>
+    <a href="/siswa/create"><button></button>Tambah Data Siswa</a>
     </div>
 </body>
 </html>
