@@ -7,13 +7,13 @@
 </head>
 <body>
     <div>
-    <h1>Halaman Beranda</h1>
+    <h1>HALAMAN PERTAMA</h1>
     <p>List Data Siswa</p>
     <a href=""></a>
     <table border="1">
         <thead>
             <tr>
-                <th>Photo</th>
+                <th>Image</th>
                 <br>
                 <th>Name</th>
                 <br>
@@ -28,9 +28,9 @@
         <tbody>
             <tr>
                 <td>foto.jpg</td>
-                <td>Bayu Sakti Darmawan</td>
-                <td>007</td>
-                <td>Lakbok Ciamis</td>
+                <td>BAYU SAKTI DARMAWAN</td>
+                <td>0076387921</td>
+                <td>DESA SUKANAGARA RT 01 RW 01 LAKBOK</td>
                 <td><a href="">Detail</a>
                 <td><a href="">Edit</a>
                 <td><a href="">Hapus</a>

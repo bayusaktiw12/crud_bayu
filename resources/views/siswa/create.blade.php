@@ -6,9 +6,10 @@
     <title>BAYU SAKTI DARMAWAN</title>
 </head>
 <body>
-    <h1>Halaman Tambah</h1><br>
+    <h1>HALAMAN KEDUA</h1><br>
     <a href="/">Kembali</a><br>
-    <form action=""method="post">
+    <form action="/siswa/store" method="post">
+        @csrf
         <div>
             <label name="kelas">Kelasku</label>
             <br>
@@ -16,31 +17,52 @@
                 <option value="1">XII PPLG 1</option>
                 <option value="2">XII PPLG 2</option>
                 <option value="3">XII PPLG 3</option>
-            </select>
+            </select><br>
+            @error('kelas')
+            <small style="color: red;">{{$message}}</small>
+            @enderror
         </div><br>
         <div>
             <label name="name">Nama</label><br>
-            <input type="text"name="nama">
+            <input type="text"name="name"><br>
+            @error('name')
+            <small style="color: red;">{{$message}}</small>
+            @enderror
         </div><br>
         <div>
             <label name="nisn">Nisn</label><br>
-            <input type="text"name="nisn">
+            <input type="text"name="nisn"><br>
+            @error('nisn')
+            <small style="color: red;">{{$message}}</small>
+            @enderror
         </div><br>
         <div>
             <label name="alamat">Alamat</label><br>
-            <input type="text"name="alamat">
+            <input type="text"name="alamat"><br>
+            @error('alamat')
+            <small style="color: red;">{{$message}}</small>
+            @enderror
         </div><br>
         <div>
             <label name="email">Email</label><br>
-            <input type="text"name="email">
+            <input type="text"name="email"><br>
+            @error('email')
+            <small style="color red;">{{$message}}</small>
+            @enderror
         </div><br>
         <div>
             <label name="no handphone">No Handphone</label><br>
-            <input type="text"name="no handphone">
+            <input type="text"name="no_handphone"><br>
+            @error('no_handphone')
+            <small style="color: red;">{{$message}}</small>
+            @enderror
         </div><br>
         <div>
             <label name="password">Password</label><br>
-            <input type="text"name="password">
+            <input type="password"name="password"><br>
+            @error('password')
+            <small style="color: red;">{{$message}}</small>
+            @enderror
         </div><br>
         <div>
             <label name="foto">Foto</label><br>
