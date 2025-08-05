@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Clas extends Model
 {
     //nama tabel
-    protected $stable='clases';
+    protected $table='clases';
 
     //fillabel
     protected $guarded= [];

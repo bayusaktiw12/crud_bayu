@@ -8,15 +8,15 @@
 <body>
     <h1>HALAMAN KEDUA</h1><br>
     <a href="/">Kembali</a><br>
-    <form action="/siswa/store" method="post">
+    <form action="/siswa/store" method="POST" enctype="multipart/form-data">
         @csrf
         <div>
             <label name="kelas">Kelasku</label>
             <br>
             <select name="kelas">
-                <option value="1">XII PPLG 1</option>
-                <option value="2">XII PPLG 2</option>
-                <option value="3">XII PPLG 3</option>
+                @foreach ($clases as $clas)
+                <option value="{{ $clas->id }}">{{ $clas->name }}</option>
+                @endforeach
             </select><br>
             @error('kelas')
             <small style="color: red;">{{$message}}</small>
@@ -47,7 +47,7 @@
             <label name="email">Email</label><br>
             <input type="text"name="email"><br>
             @error('email')
-            <small style="color red;">{{$message}}</small>
+            <small style="color: red;">{{$message}}</small>
             @enderror
         </div><br>
         <div>
@@ -65,8 +65,8 @@
             @enderror
         </div><br>
         <div>
-            <label name="foto">Foto</label><br>
-            <input type="file"name="foto">
+            <label name="photo">Foto</label><br>
+            <input type="file"name="photo" >
         </div><br>
         <button type="submit">Simpan</button>
     </form>
