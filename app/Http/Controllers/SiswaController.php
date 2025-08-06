@@ -10,7 +10,11 @@ class SiswaController extends Controller
 {
    // mengarahkan halaman index
    public function index() {
-     return view('siswa.index');
+     
+    // siapkan data siswa
+     $siswas = User::all();
+
+    return view('siswa.index', compact('siswas'));
 }
 
    public function create() {
@@ -49,8 +53,7 @@ class SiswaController extends Controller
         'no_handphone'    => $request->no_handphone,
           ];
           
-
-           $datauser_store['photo'] = $request->file('photo')->store('profilesiswa', 'public');
+        $datauser_store['photo'] = $request->file('photo')->store('profilesiswa', 'public');
            
            // simpan data ke dalam tabel user
             User::create($datauser_store);

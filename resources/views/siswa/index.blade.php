@@ -19,6 +19,8 @@
                 <br>
                 <th>Nisn</th>
                 <br>
+                <th>Kelas</th>
+                <br>
                 <th>Alamat</th>
                 <br>
                 <th>Option</th>
@@ -26,15 +28,20 @@
             </tr>
         </thead>
         <tbody>
+            @foreach ($siswas as $siswa)
             <tr>
-                <td>foto.jpg</td>
-                <td>BAYU SAKTI DARMAWAN</td>
-                <td>0076387921</td>
-                <td>DESA SUKANAGARA RT 01 RW 01 LAKBOK</td>
-                <td><a href="">Detail</a>
-                <td><a href="">Edit</a>
-                <td><a href="">Hapus</a>
+                <td><img src="{{asset('storage/'.$siswa->photo) }}" alt="" width="80"></td>
+                <td>{{ $siswa->name }}</td>
+                <td>{{ $siswa->nisn }}</td>
+                <td>{{ $siswa->clas->name }}</td>
+                <td>{{ $siswa->alamat }}</td>
+                <td>
+                <a href="">Detail</a>
+                <a href="">Edit</a>
+                <a href="">Hapus</a>
+                </td>
             </tr>
+            @endforeach
         </tbody>
     </table>
     <a href="/siswa/create"><button></button>Tambah Data Siswa</a>
