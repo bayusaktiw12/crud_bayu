@@ -30,7 +30,7 @@
         <tbody>
             @foreach ($siswas as $siswa)
             <tr>
-                <td><img src="{{asset('storage/'.$siswa->photo) }}" alt="" width="80"></td>
+                <td><img src="{{asset('storage/'.$siswa->photo) }}" alt="" width="90"></td>
                 <td>{{ $siswa->name }}</td>
                 <td>{{ $siswa->nisn }}</td>
                 <td>{{ $siswa->clas->name }}</td>
@@ -38,7 +38,7 @@
                 <td>
                 <a href="">Detail</a>
                 <a href="">Edit</a>
-                <a href="">Hapus</a>
+                <a href="/siswa/delete/{{ $siswa->id }}">Hapus</a>
                 </td>
             </tr>
             @endforeach
