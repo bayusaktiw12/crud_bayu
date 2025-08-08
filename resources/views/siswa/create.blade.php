@@ -7,7 +7,7 @@
 </head>
 <body>
     <h1>HALAMAN KEDUA</h1><br>
-    <a href="/">Kembali</a><br>
+    <a href="/">KEMBALI</a><br>
     <form action="/siswa/store" method="POST" enctype="multipart/form-data">
         @csrf
         <div>
@@ -68,7 +68,7 @@
             <label name="photo">Foto</label><br>
             <input type="file"name="photo" >
         </div><br>
-        <button type="submit">Simpan</button>
+        <button type="submit">SIMPAN</button>
     </form>
 </body>
 </html>

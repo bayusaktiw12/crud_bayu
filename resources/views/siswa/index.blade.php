@@ -8,7 +8,7 @@
 <body>
     <div>
     <h1>HALAMAN PERTAMA</h1>
-    <p>List Data Siswa</p>
+    <p>LIST DATA SISWA</p>
     <a href=""></a>
     <table border="1">
         <thead>
@@ -36,7 +36,7 @@
                 <td>{{ $siswa->clas->name }}</td>
                 <td>{{ $siswa->alamat }}</td>
                 <td>
-                <a href="">Detail</a>
+                <a href="siswa/show/{{ $siswa->id }}">Detail</a>
                 <a href="">Edit</a>
                 <a href="/siswa/delete/{{ $siswa->id }}">Hapus</a>
                 </td>
@@ -44,7 +44,7 @@
             @endforeach
         </tbody>
     </table>
-    <a href="/siswa/create"><button></button>Tambah Data Siswa</a>
+    <a href="/siswa/create"><button></button>TAMBAH DATA SISWA</a>
     </div>
 </body>
 </html>

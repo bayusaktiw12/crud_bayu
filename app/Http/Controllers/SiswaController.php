@@ -59,15 +59,15 @@ class SiswaController extends Controller
            // simpan data ke dalam tabel user
             User::create($datauser_store);
 
-            //pindahkan user ke halaman beranda / home
+          //pindahkan user ke halaman beranda / home
             return redirect('/');
     }
 
            // simpan data ke dalam tabel user
-           public function destroy($id) {
+            public function destroy($id) {
 
            // cari user dalam database berdasarkan id yang di kirimkan
-           $datauser = User::find($id);
+            $datauser = User::find($id);
 
            // lakukan delete pada data tersebut jika data user tersebut ada
            if ($datauser != null) {
@@ -76,7 +76,21 @@ class SiswaController extends Controller
      }
 
            // kembalikan user ke halaman beranda
-           return redirect ('/');
+             return redirect ('/');
 
      }
+            // fungsi detail siswa
+              public function show($id) {
+            
+            // cari data siswa di dalam tabel user dengan id yang di kirimkan
+              $datauser = User::find($id);
+            
+            // cek apakah datanya ada atau tidak
+              if ($datauser == null) {
+                return redirect ('/');
+              }
+            
+            // pindah user ke halaman detail siswa dengan mengirimkan data detailnya
+               return view ('siswa.show', compact('datauser'));
+    }
     }
