@@ -34,11 +34,11 @@ class SiswaController extends Controller
          $request-> validate([
             'kelas'        =>'required',
             'name'         =>'required',
-            'nisn'         =>'required | unique:users,nisn',
+            'nisn'         =>'required',
             'alamat'       =>'required',
-            'email'        =>'required | unique:users,email',
+            'email'        =>'required',
             'password'     =>'required',
-            'no_handphone' =>'required | unique:users,no_handphone',
+            'no_handphone' =>'required',
 
          ]);
 
@@ -86,11 +86,55 @@ class SiswaController extends Controller
               $datauser = User::find($id);
             
             // cek apakah datanya ada atau tidak
-              if ($datauser == null) {
+              if ($datauser = null) {
                 return redirect ('/');
               }
             
             // pindah user ke halaman detail siswa dengan mengirimkan data detailnya
                return view ('siswa.show', compact('datauser'));
+    }
+            // fungsi untuk mengarahkan user ke halaman edit siswa
+                 public function edit($id) {
+            
+                    // siapkan data class dan tampung datanya ke dalam variable
+                    $clases = Clas::all();
+
+                    // ambil data user berdasarkan id yang di kirimkan
+                    $datauser = User::find($id);
+
+                    if ($datauser == null) {
+                        return redirect ('/');
+                    }
+
+                    return view ('siswa.edit', compact('datauser', 'clases'));
+    }
+              // fungsi update data siswa
+                 public function update(Request $request, $id) {
+              
+              // validasi data
+              $request-> validate ([
+            'kelas'        =>'required',
+            'name'         =>'required',
+            'nisn'         =>'required',
+            'alamat'       =>'required',
+            'email'        =>'required',
+            'no_handphone' =>'required',
+     ]);
+            // siapkan data yang akan di update : cari data siswa / user di database
+             $datasiswa = User::find($id);
+             
+             $datasiswa_update = [
+            'class_id'    => $request->kelas,
+            'name'        => $request->name,
+            'nisn'        => $request->nisn, 
+            'alamat'      => $request->alamat,
+            'email'       => $request->email,
+        'no_handphone'    => $request->no_handphone,
+      ];
+      
+             // update data sesuai dengan data siswa/user yang sudah di simpan
+             $datasiswa->update($datasiswa_update);
+
+             return redirect ('/');
     }
     }

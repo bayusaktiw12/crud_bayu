@@ -37,7 +37,7 @@
                 <td>{{ $siswa->alamat }}</td>
                 <td>
                 <a href="siswa/show/{{ $siswa->id }}">Detail</a>
-                <a href="">Edit</a>
+                <a href="siswa/edit/{{ $siswa->id }}">Edit</a>
                 <a href="/siswa/delete/{{ $siswa->id }}">Hapus</a>
                 </td>
             </tr>
