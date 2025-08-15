@@ -7,9 +7,10 @@
 </head>
 <body>
     <div>
+    <a href="/">MENU SISWA</a><br>
+    <a href="/clas">MENU KELAS</a><br>
     <h1>HALAMAN PERTAMA</h1>
     <p>LIST DATA SISWA</p>
-    <a href=""></a>
     <table border="1">
         <thead>
             <tr>

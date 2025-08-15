@@ -17,7 +17,7 @@ class SiswaController extends Controller
 
     return view('siswa.index', compact('siswas'));
 }
-
+  // mengarahkan halaman create
    public function create() {
   // siapkan data kelas
   $clases = Clas::all();
@@ -50,9 +50,10 @@ class SiswaController extends Controller
             'nisn'        => $request->nisn,
             'alamat'      => $request->alamat,
             'email'       => $request->email,
-            'password'    => $request->password,
+            'password'    => bcrypt($request->password),
         'no_handphone'    => $request->no_handphone,
-          ];
+          
+      ];
           
         $datauser_store['photo'] = $request->file('photo')->store('profilesiswa', 'public');
            
@@ -93,48 +94,62 @@ class SiswaController extends Controller
             // pindah user ke halaman detail siswa dengan mengirimkan data detailnya
                return view ('siswa.show', compact('datauser'));
     }
-            // fungsi untuk mengarahkan user ke halaman edit siswa
-                 public function edit($id) {
+      // fungsi untuk mengarahkan user ke halaman edit siswa
+          public function edit($id) {
+          
+                  // siapkan data class dan tampung datanya ke dalam variable
+                  $clases = Clas::all();
+
+                  // ambil data user berdasarkan id yang di kirimkan
+                  $datauser = User::find($id);
+
+                  if ($datauser == null) {
+                      return redirect ('/');
+                  }
+
+                  return view ('siswa.edit', compact('datauser', 'clases'));
+          }
+
+
+
+      // fungsi update data siswa
+          public function update(Request $request, $id) { 
+            // validasi data
+            $request-> validate ([
+                'kelas'        =>'required',
+                'name'         =>'required',
+                'nisn'         =>'required',
+                'alamat'       =>'required',
+                'email'        =>'required',
+                'no_handphone' =>'required',
+            ]);
+
+
+          // siapkan data yang akan di update : cari data siswa / user di database
+            $datasiswa = User::find($id);
             
-                    // siapkan data class dan tampung datanya ke dalam variable
-                    $clases = Clas::all();
+            $datasiswa_update = [
+                'class_id'    => $request->kelas,
+                'name'        => $request->name,
+                'nisn'        => $request->nisn, 
+                'alamat'      => $request->alamat,
+                'email'       => $request->email,
+                'no_handphone'    => $request->no_handphone
+          ];
 
-                    // ambil data user berdasarkan id yang di kirimkan
-                    $datauser = User::find($id);
-
-                    if ($datauser == null) {
-                        return redirect ('/');
-                    }
-
-                    return view ('siswa.edit', compact('datauser', 'clases'));
-    }
-              // fungsi update data siswa
-                 public function update(Request $request, $id) {
-              
-              // validasi data
-              $request-> validate ([
-            'kelas'        =>'required',
-            'name'         =>'required',
-            'nisn'         =>'required',
-            'alamat'       =>'required',
-            'email'        =>'required',
-            'no_handphone' =>'required',
-     ]);
-            // siapkan data yang akan di update : cari data siswa / user di database
-             $datasiswa = User::find($id);
+            // cek apakah user merubah password baru atau tidak
+            if ($request->password != null) {
+              $datauser['password'] =  bcrypt($request->password);
+            }
              
-             $datasiswa_update = [
-            'class_id'    => $request->kelas,
-            'name'        => $request->name,
-            'nisn'        => $request->nisn, 
-            'alamat'      => $request->alamat,
-            'email'       => $request->email,
-        'no_handphone'    => $request->no_handphone,
-      ];
-      
-             // update data sesuai dengan data siswa/user yang sudah di simpan
-             $datasiswa->update($datasiswa_update);
-
-             return redirect ('/');
-    }
+          // cek apakah user merubah gambar baru atau tidak
+          if ($request->hasFile('photo')) {
+            Storage::disk('public')->delete($datasiswa->photo);
+            $datasiswa_update['photo'] = $request->file('photo')->store('profilesiswa', 'public');
+          }
+             
+          // update data sesuai dengan data siswa/user yang sudah di simpan
+            $datasiswa->update($datasiswa_update);
+            return redirect ('/');
+        }
     }

@@ -8,8 +8,8 @@
 <body>
     <h1>DETAIL SISWA</h1>
     {{-- profile siswa --}}
-    <img src="{{asset('storage/'.$datauser->photo) }}" alt="" width="100">
-
+    <img src="{{asset('storage/'.$datauser->photo) }}" alt="" width="90">
+    
     {{--  nama siswa --}}
     <h6>{{ $datauser->name }}</h6>
 
