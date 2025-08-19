@@ -8,14 +8,14 @@
 <body>
     <h1>HALAMAN EDIT KELAS</h1><br><br>
 
-    <form action="{{ route('kelas.update', $clas->id) }}" method="POST">
+    <form action="{{ '/clas/update', $clas->id }}" method="POST">
         @csrf
         @method('PUT')
 
         {{-- Nama Kelas --}}
         <div>
-            <label for="nama_kelas">Nama Kelas</label><br>
-            <input type="text" name="nama_kelas" value="{{ ('nama_kelas', $clas->nama_kelas) }}"><br>
+            <label for="name">Nama Kelas</label><br>
+            <input type="text" name="name" value="{{ ( $clas->name) }}"><br>
             @error('nama_kelas')
                 <small style="color: red;">{{ $message }}</small>
             @enderror
@@ -24,7 +24,7 @@
         {{-- Deskripsi --}}
         <div>
             <label for="deskripsi">Deskripsi</label><br>
-            <textarea name="deskripsi" rows="3">{{ ('deskripsi', $clas->deskripsi) }}</textarea><br>
+            <textarea name="deskripsi" rows="3">{{ ( $clas->deskripsi) }}</textarea><br>
             @error('deskripsi')
                 <small style="color: red;">{{ $message }}</small>
             @enderror
@@ -35,7 +35,7 @@
     </form>
 
     <br>
-    <a href="{{ route('kelas.index') }}"><button>KEMBALI</button></a>
+    <a href="{{ 'clas/index' }}"><button>KEMBALI</button></a>
 
 </body>
 </html>

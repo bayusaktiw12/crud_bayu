@@ -25,6 +25,6 @@
     <p>{{ $clas->updated_at->format('d M Y H:i') }}</p>
 
     {{-- Tombol kembali --}}
-    <a href="{{ route('kelas.index') }}">KEMBALI KE DAFTAR KELAS</a>
+    <a href="{{ route('clas.index') }}">KEMBALI KE DAFTAR KELAS</a>
 </body>
 </html>

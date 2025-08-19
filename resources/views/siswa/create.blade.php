@@ -1,12 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BAYU SAKTI DARMAWAN</title>
-</head>
-<body>
-    <h1>HALAMAN KEDUA</h1><br>
+ @extends('layouts.app')
+ @section('title')
+    <title>CREATE SISWA</title>
+@endsection
+@section('content')
+<h1>HALAMAN KEDUA</h1><br>
     <a href="/">KEMBALI</a><br>
     <form action="/siswa/store" method="POST" enctype="multipart/form-data">
         @csrf
@@ -70,5 +67,4 @@
         </div><br>
         <button type="submit">SIMPAN</button>
     </form>
-</body>
-</html>
+@endsection

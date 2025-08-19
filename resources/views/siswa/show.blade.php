@@ -1,11 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ @extends('layouts.app')
+ @section('title')
     <title>SHOW SISWA</title>
-</head>
-<body>
+@endsection
+@section('content')
     <h1>DETAIL SISWA</h1>
     {{-- profile siswa --}}
     <img src="{{asset('storage/'.$datauser->photo) }}" alt="" width="90">
@@ -24,6 +21,4 @@
      
      {{-- no_handphone siswa --}}
      <h6>{{ $datauser->no_handphone }}</h6>
-
-</body>
-</html>
+@endsection

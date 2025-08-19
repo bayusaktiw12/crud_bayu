@@ -7,79 +7,75 @@ use Illuminate\Http\Request;
 
 class ClasController extends Controller
 {
-    // Menampilkan semua data clas
-    public function index()
-    {
-        $clases = Clas::all();
-        return view('clas.index', compact('clases'));
+   public function index() {
+    $clases = Clas::all();
+
+    return view('clas.index', compact('clases'));
+   }
+
+   public function create() {
+    return redirect('/clas');
+
+    $request-> validate([
+        'name'    => 'required | unique:clases,name',
+    'description' => 'required',
+]);
+
+    $dataclas_store = [
+        'name'    => $request->name,
+    'description' => $request->description,
+    ];
+
+    Clas::create($dataclas_store);
+
+    return redirect ('/clas');
+   }
+
+   public function destroy($id) {
+    $dataclas = Clas::find($id);
+    
+    if ($dataclas != null) {
+       $dataclas -> delete();
+    }
+   
+   return redirect ('/clas');
+}
+
+   public function show($id) {
+    $dataclas = Clas::find($id);
+    $datauser = User::where('class_id , $id')->get();
+
+    if ($dataclas == null) {
+        return redirect ('/clas');
     }
 
-    // Menampilkan form tambah clas
-    public function create()
-    {
-        return view('clas.create');
+    return view ('clas.show' , compact('dataclas', 'datauser'));
+   }
+   public function edit ($id) {
+    $dataclas = Clas::find($id);
+
+    if ($dataclas == null) {
+        return redirect ('/clas');
     }
+    return view ('clas.edit', compact('dataclas'));
+   }
+   public function update(Request $request, $id) {
 
-    // Menyimpan data clas baru
-    public function store(Request $request)
-    {
-        // Validasi input
-        $request->validate([
-            'nama_clas'    => 'required',
-            'description'  => 'required',
-        ]);
+    $request -> validate([
+        'name'     => 'required | unique:clases,name',
+    'description'  => 'required',
+    ]);
 
-        // Simpan ke database
-        Clas::create([
-            'nama_clas'    => $request->nama_clas,
-            'description'  => $request->deskripsi,
-        ]);
+    $dataclas = Clas::find($id);
 
-        return redirect()->route('clas.index')->with('success', 'clas berhasil ditambahkan');
-    }
+    $dataclas_update = [
+        'name'    => $request->name,
+    'description' => $request->description,
+    ];
 
-    // Menampilkan form edit clas
-    public function edit($id)
-    {
-        $clas = Clas::find($id);
+    $dataclas->update($dataclas_update);
 
-        if (!$clas) {
-            return redirect()->route('clas.index')->with('error', 'Data clas tidak ditemukan');
-        }
+    return reedirect('/clas');
 
-        return view('clas.edit', compact('clas'));
-    }
-
-    // Mengupdate data clas
-    public function update(Request $request, $id)
-    {
-        // Validasi input
-        $request->validate([
-            'nama_clas'   => 'required',
-            'description '=> 'required',
-        ]);
-
-        $clas = Clas::find($id);
-        if (!$clas) {
-            return redirect()->route('clas.index')->with('error', 'Data clas tidak ditemukan');
-        }
-
-        $clas->update([
-            'nama_clas'    => $request->nama_clas,
-            'description'  => $request->description,
-        ]);
-
-        return redirect()->route('clas.index')->with('success', 'clas berhasil diperbarui');
-    }
-
-    // Menghapus data clas
-    public function destroy($id)
-    {
-        $clas = Clas::find($id);
-        if ($clas) {
-            $clas->delete();
-        }
-
-        return redirect()->route('clas.index')->with('success', 'clas berhasil dihapus');
-    }
+   }
 }

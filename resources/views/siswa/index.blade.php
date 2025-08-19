@@ -1,15 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PKL 2025</title>
-</head>
-<body>
+ @extends('layouts.app')
+ @section('title')
+    <title>INDEX SISWA</title>
+@endsection
+@section('content')
     <div>
-    <a href="/">MENU SISWA</a><br>
-    <a href="/clas">MENU KELAS</a><br>
-    <h1>HALAMAN PERTAMA</h1>
+    <h1>HALAMAN SISWA</h1>
     <p>LIST DATA SISWA</p>
     <table border="1">
         <thead>
@@ -47,5 +42,4 @@
     </table>
     <a href="/siswa/create"><button></button>TAMBAH DATA SISWA</a>
     </div>
-</body>
-</html>
+@endsection

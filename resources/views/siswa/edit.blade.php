@@ -1,11 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BAYU SAKTI DARMAWAN</title>
-</head>
-<body>
+ @extends('layouts.app')
+ @section('title')
+    <title>EDIT SISWA</title>
+@endsection
+@section('content')
     <h1>HALAMAN EDIT</h1><br>
     <br>
     <img src="{{asset('storage/'.$datauser->photo) }}" alt="" width="90">
@@ -75,5 +72,4 @@
     </form>
         <a href="/"><button>KEMBALI</button></a><br>
 </br>
-</body>
-</html>
+@endsection
