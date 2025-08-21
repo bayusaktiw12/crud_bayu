@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Clas;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class ClasController extends Controller
@@ -43,7 +44,7 @@ class ClasController extends Controller
 
    public function show($id) {
     $dataclas = Clas::find($id);
-    $datauser = User::where('class_id , $id')->get();
+    $datauser = User::where('class_id' , $id)->get();
 
     if ($dataclas == null) {
         return redirect ('/clas');
@@ -75,7 +76,7 @@ class ClasController extends Controller
 
     $dataclas->update($dataclas_update);
 
-    return reedirect('/clas');
+    return redirect('/clas');
 
    }
 }
